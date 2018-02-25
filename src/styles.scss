@@ -1,1 +1,181 @@
-/* You can add global styles to this file, and also import other style files */
+html{
+  font-size: 62.5%;
+  background-color: white;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-size: 1.6rem;
+  box-sizing: border-box;
+  background-color: rgb(248, 248, 248);
+  font-family: 'Open Sans',sans-serif;
+
+}
+
+.navbar{
+  height: 6vh;
+}
+
+.chat{
+  display: flex;
+  height: 94vh;
+}
+
+.chat-sidebar{
+  flex:0 0 25%;
+  background:linear-gradient(to bottom right, #cc0c22, #ea384d);
+}
+
+.chat-main{
+  background:white;
+  flex-grow:1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages{
+  flex:1;
+  overflow-y: auto;
+  padding: 1rem;
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #ea384d), color-stop(0.72, #cc0c22), color-stop(0.86, #ee1a33));
+
+  }
+
+
+
+
+}
+
+.chat-form{
+  padding: 1rem;
+  background-color: #fcfcfc;
+  border-top: 1px solid #cfcfcf
+}
+
+.form{
+  display: flex;
+  .chat-input{
+    flex:1;
+    border: none;
+    padding: 1.3rem;
+    box-shadow: 0 0 .1rem black;
+    border-radius: 3px;
+    font-size: 1.6rem;
+  }
+  .chat-button{
+    border:none;
+    margin: 0 1rem;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #ea384d;
+    color: white;
+  }
+}
+
+
+.loading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #4B4B4B;
+  flex: 1;
+}
+
+.message{
+  margin-top: 20px;
+  margin-left: 53px;
+  margin-bottom: -25px;
+  min-width: 100px;
+  max-width: 500px;
+  width: fit-content;
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  border: 1px solid rgba(0, 0, 0, .125);
+
+  &-other{
+  margin-left: auto;
+  margin-right: 53px;   
+  }
+}
+
+
+.sender {
+  color: rgb(49, 43, 43);
+  font-weight: 700;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+}
+
+.timestamp {
+  color: white;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 3px;
+  font-weight: 400;
+  display: block;
+}
+
+p {
+  margin: 0;
+  padding: .5rem 0;
+  font-family: "Roboto", "Lato", sans-serif;
+}
+
+.msg-avatar {
+  position: absolute;
+  left: -53px;
+  top: -20px;
+  /* background-color: skyblue; */
+  vertical-align: middle;
+  text-align: center;
+
+  &-sender{
+    left: unset;
+    right: -53px;
+  }
+}
+
+.msg-avatar img {
+  height: 45px;
+  width: 45px;
+  /* vertical-align: middle; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,10 @@
-<p>
-  chat-form works!
-</p>
+<form class="form" (submit)="send($event)">
+  <input name="chat" autocomplete="off" type="text" class="chat-input" 
+  [(ngModel)]="message"
+  placeholder="start typing">
+  <button class="chat-button" type="submit">Send</button>
+</form>
+ 
+ 
+
+  

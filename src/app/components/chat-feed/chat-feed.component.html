@@ -1,3 +1,10 @@
-<p>
-  chat-feed works!
-</p>
+<p class="loading" *ngIf="loading">Loading Messages...</p>
+<ul class="chat-messages" *ngIf="!loading">
+    <li class="message "  [ngClass]="{'message-other':i%2!=0}" *ngFor="let message of messages;let i=index" >
+      <app-message [index]=i  [chatMessage]=message></app-message>
+    </li>
+</ul>
+<app-chat-form class="chat-form"></app-chat-form>
+
+
+ 
