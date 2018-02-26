@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  many=[1,2,3,4];
+
+  add(){
+    this.many.push(1);
+  }
   constructor() { }
 
   ngOnInit() {

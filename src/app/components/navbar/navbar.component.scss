@@ -1,0 +1,44 @@
+.left-content{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: center;
+
+  &-heading{
+    background-color: white;
+    margin-left: 2rem;
+    padding: .4rem .8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &-title {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+}
+
+.right-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  &-heading {
+    color: white;
+    background-color: #E42F44;
+    margin-left: .5rem;
+    border-radius: 3px;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+  }
+
+}

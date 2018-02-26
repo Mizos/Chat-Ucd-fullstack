@@ -1,9 +1,10 @@
-<p class="loading" *ngIf="loading">Loading Messages...</p>
-<ul class="chat-messages" *ngIf="!loading">
-    <li class="message "  [ngClass]="{'message-other':i%2!=0}" *ngFor="let message of messages;let i=index" >
-      <app-message [index]=i  [chatMessage]=message></app-message>
-    </li>
-</ul>
+<app-loader *ngIf="loading">Loading Messages...</app-loader>
+<div #scroller class="chat-feed">
+  <ul class="chat-list" *ngIf="!loading">
+    <app-message  *ngFor="let message of feed" [chatMessage]=message></app-message>    
+  </ul>
+</div>
+
 <app-chat-form class="chat-form"></app-chat-form>
 
 

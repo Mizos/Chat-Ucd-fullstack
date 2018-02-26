@@ -25,6 +25,7 @@ import { ChatService } from "./services/chat.service";
 import { appRoutes } from "./routes";
 //Env
 import { environment } from "../environments/environment";
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { environment } from "../environments/environment";
     SignupComponent,
     NavbarComponent,
     UserListComponent,
-    UserComponent
+    UserComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

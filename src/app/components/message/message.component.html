@@ -1,9 +1,11 @@
-<div class="msg-avatar" [ngClass]="{'msg-avatar-sender':index%2!=0}">
+<li class="message animated fadeIn" [ngClass]="{'message-self':mymessgae}">
+  <div class="msg-avatar">
   <img src="assets/img/user.png" alt="" />
   <!-- <span class="timestamp">{{chatMessage.createdAt|date}}</span> -->
-</div>
+  </div>
 
-<div class="msg-text">
-  <span class="sender">{{chatMessage.from}}</span>
-  <p>{{chatMessage.text}}</p>
-</div>
+  <div class="msg-text">
+  <span class="sender" [ngClass]="{'sender-self':mymessgae}">{{username}}</span>
+  <p>{{text}}</p>
+  </div>
+</li>

@@ -16,49 +16,62 @@ body{
 
 }
 
-.navbar{
-  height: 6vh;
-}
-
 .chat{
   display: flex;
-  height: 94vh;
+  height: 93vh;
 }
 
 .chat-sidebar{
-  flex:0 0 25%;
+  flex:0 0 20%;
+  display: flex;
+  flex-direction: column;
   background:linear-gradient(to bottom right, #cc0c22, #ea384d);
 }
 
+.users{
+  flex:1;
+}
+.footer{
+  padding: 2rem;
+  height: 8rem;
+
+  &-content{
+    border-radius: 3px;
+    height: 100%;
+    background-color: white;
+  }
+}
+
 .chat-main{
-  background:white;
+  background:hsl(0, 0%, 99%);
   flex-grow:1;
   display: flex;
   flex-direction: column;
 }
 
-.chat-messages{
+
+
+.chat-feed{
   flex:1;
   overflow-y: auto;
-  padding: 1rem;
+  // padding: 1rem;
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
 
   &::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F5F5F5;
+    width: 8px;
+    background-color: hsl(0, 0%, 99%);
   }
 
   &::-webkit-scrollbar-thumb {
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #ea384d), color-stop(0.72, #cc0c22), color-stop(0.86, #ee1a33));
-
+    background:#E22C41
   }
+}
 
-
-
-
+.chat-list{
+  padding: 1rem;
 }
 
 .chat-form{
@@ -77,18 +90,20 @@ body{
     border-radius: 3px;
     font-size: 1.6rem;
   }
-  .chat-button{
-    border:none;
-    margin: 0 1rem;
-    padding: 1rem 3rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #ea384d;
-    color: white;
-  }
 }
+
+.chat-button {
+  border: none;
+  margin: 0 1rem;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #ea384d;
+  color: white;
+}
+
 
 
 .loading {
@@ -99,9 +114,9 @@ body{
 }
 
 .message{
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 53px;
-  margin-bottom: -25px;
+  margin-bottom: 20px;
   min-width: 100px;
   max-width: 500px;
   width: fit-content;
@@ -111,19 +126,22 @@ body{
   border-radius: 8px;
   background-color: #fcfcfc;
   border: 1px solid rgba(0, 0, 0, .125);
+  animation-duration: .8s;
 
-  &-other{
-  margin-left: auto;
-  margin-right: 53px;   
+  &-self{
+    background-color: rgb(241, 70, 90);
+    color: white;
   }
 }
-
 
 .sender {
   color: rgb(49, 43, 43);
   font-weight: 700;
   font-size: 1.7rem;
   text-transform: capitalize;
+  &-self{
+    color: white;
+  }
 }
 
 .timestamp {
@@ -144,8 +162,7 @@ p {
 .msg-avatar {
   position: absolute;
   left: -53px;
-  top: -20px;
-  /* background-color: skyblue; */
+  top: -4px;
   vertical-align: middle;
   text-align: center;
 
@@ -158,10 +175,101 @@ p {
 .msg-avatar img {
   height: 45px;
   width: 45px;
-  /* vertical-align: middle; */
 }
 
 
+.navbar {
+  position: relative;
+  height: 7vh;
+  display: flex;
+  box-shadow: 0 0rem 1.5rem 0rem rgba(0, 0, 0, 0.3);
+  .left{
+    position: relative;
+    background-color: #D5182E;
+    flex: 0 0 20%;
+  }
+  .right{
+    position: relative;
+    background-color: white;
+    flex: 1;
+  }
+}
+
+.userList{
+  margin-top: 3.5rem;
+}
+
+.centered-form {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #fc4258, #d8031c);
+}
+
+.centered-form__form {
+  box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.3);
+  background:white;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  padding: 1.5rem 2.5rem;
+  margin: 2rem;
+  width: 50rem;
+
+  button {
+    border: none;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    background: #fc4258;
+    color: white;
+    cursor: pointer;
+    padding: 1.2rem;
+    transition: all .3s ease;
+  }
+
+  button:hover {
+    background: #c91a2f;
+  }
+
+  button:disabled {
+    cursor: default;
+    background: #fc4258;
+  }
+
+}
+
+.form-field {
+  margin: 2rem 0;
+}
+
+.form-field>* {
+  width: 100%;
+}
+
+.form-field label {
+  display: block;
+  font-size: 1.7rem;
+  color: #4B4B4B;
+  margin-bottom: 7px;
+}
+
+.form-field input,
+.form-field select {
+  border: 1px solid #e1e1e1;
+  font-size: 1.7rem;
+  width: 93%;
+  padding: 10px;
+}
+
+h3 {
+  font-weight: 700;
+  text-align: center;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  color: #4B4B4B;
+}
 
 
 

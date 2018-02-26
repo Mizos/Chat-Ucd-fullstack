@@ -1,3 +1,29 @@
-<p>
-  signup works!
-</p>
+<div class="centered-form">
+  <div class="centered-form__form">
+    <form (submit)=signUp($event)>
+      <div class="form-field">
+        <h3>chat ucd</h3>
+      </div>
+
+      <div class="form-field">
+        <label for="name">Username</label>
+        <input autocomplete="off" type="text" placeholder="username" name="username" [(ngModel)]="displayName">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Passowrd</label>
+        <input autocomplete="off" type="password" placeholder="password" name="password" [(ngModel)]="password">
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input autocomplete="off" type="text" placeholder="email" name="email" [(ngModel)]="email">
+      </div>
+
+      <div class="form-field">
+      <button type="submit">Let's go</button>
+      </div>
+    </form>
+     
+  </div>
+</div>

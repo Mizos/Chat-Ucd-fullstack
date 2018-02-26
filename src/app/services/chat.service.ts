@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { AuthService } from "./auth.service";
 import * as firebase from 'firebase/app';
 
-import { Message } from "../models/message,model";
+import { Message } from "../models/message.model";
 
 
 @Injectable()
@@ -13,12 +13,18 @@ export class ChatService {
 
   user:firebase.User;
   chatMessages:any;
+  username:string;
 
   constructor(private db:AngularFireDatabase,private afAuth:AngularFireAuth) {
     this.afAuth.authState.subscribe(currentUser=>{
       if(currentUser){
         this.user=currentUser;
+        console.log(this.user);
+        this.getUser().subscribe(dbUser => {
+          this.username = dbUser['displayName'];
+        })
       }
+     
     })
   }
 
@@ -29,14 +35,26 @@ export class ChatService {
 
   send(message:string){
    const timestamp = this.getTimestamp();
-  //  const username=this.user.displayName;
-   const username='Admin';
+   const username=this.username
    this.chatMessages=this.getMessages();
    this.chatMessages.push({
      text:message,
      createdAt:timestamp,
-     from:username
+     from:username,
+     email:this.user.email
    })
+  }
+
+
+  getUser(){
+    const uid =this.user.uid;
+    const path=`users/${uid}`;
+    return this.db.object(path).valueChanges();
+  }
+
+  getUsers(){
+    const path = 'users/'
+    return this.db.object(path).valueChanges();
   }
 
 

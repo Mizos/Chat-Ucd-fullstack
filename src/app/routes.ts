@@ -7,5 +7,5 @@ export const appRoutes:Route[]=[
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'chat',component:ChatRoomComponent},
-  {path:'',redirectTo:'/login',pathMatch:'full'}
+  {path:'',redirectTo:'/signup',pathMatch:'full'}
 ];
