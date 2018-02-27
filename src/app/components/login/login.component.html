@@ -1,5 +1,28 @@
-<ul>
-  <li class="animated fadeIn" *ngFor="let one of many">{{one}}</li>
-</ul>
+<div class="centered-form">
+  <div class="centered-form__form animated slideInUp">
+    <form (submit)=login($event)>
 
-<button (click)="add()">add</button>
+      <h3 class="form-heading">LogIn</h3>
+      
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input autocomplete="off" type="text" placeholder="email" name="email" [(ngModel)]="email">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Passowrd</label>
+        <input autocomplete="off" type="password" placeholder="password" name="password" [(ngModel)]="password">
+      </div>
+
+
+      <div class="form-field">
+        <button type="submit">Get in</button>
+      </div>
+
+      <div class="form-field">
+        <button class="no-account" (click)="noAccount($event)">dont have an account ?</button>
+      </div>
+    </form>
+
+  </div>
+</div>

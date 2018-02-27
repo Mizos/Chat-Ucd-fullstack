@@ -26,6 +26,11 @@ import { appRoutes } from "./routes";
 //Env
 import { environment } from "../environments/environment";
 import { LoaderComponent } from './components/loader/loader.component';
+import { PrivateRoomComponent } from './components/private-room/private-room.component';
+import { PrivateNavbarComponent } from './components/private-navbar/private-navbar.component';
+import { PrivateFeedComponent } from './components/private-feed/private-feed.component';
+import { PrivateFormComponent } from './components/private-form/private-form.component';
+import { PrivateMessageComponent } from './components/private-message/private-message.component';
 
 
 @NgModule({
@@ -40,7 +45,12 @@ import { LoaderComponent } from './components/loader/loader.component';
     NavbarComponent,
     UserListComponent,
     UserComponent,
-    LoaderComponent
+    LoaderComponent,
+    PrivateRoomComponent,
+    PrivateNavbarComponent,
+    PrivateFeedComponent,
+    PrivateFormComponent,
+    PrivateMessageComponent
   ],
   imports: [
     BrowserModule,

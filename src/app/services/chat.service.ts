@@ -19,7 +19,6 @@ export class ChatService {
     this.afAuth.authState.subscribe(currentUser=>{
       if(currentUser){
         this.user=currentUser;
-        console.log(this.user);
         this.getUser().subscribe(dbUser => {
           this.username = dbUser['displayName'];
         })

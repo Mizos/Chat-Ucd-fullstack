@@ -26,6 +26,9 @@ body{
   display: flex;
   flex-direction: column;
   background:linear-gradient(to bottom right, #cc0c22, #ea384d);
+  &-private{
+     background:linear-gradient(to bottom right, #911edd, #8800a3);
+  }
 }
 
 .users{
@@ -102,6 +105,9 @@ body{
   cursor: pointer;
   background-color: #ea384d;
   color: white;
+  &-private{
+    background-color: #8E13C7;
+  }
 }
 
 
@@ -131,6 +137,9 @@ body{
   &-self{
     background-color: rgb(241, 70, 90);
     color: white;
+    &-private{
+      background-color:#8E13C7;
+    }
   }
 }
 
@@ -178,28 +187,14 @@ p {
 }
 
 
-.navbar {
-  position: relative;
-  height: 7vh;
-  display: flex;
-  box-shadow: 0 0rem 1.5rem 0rem rgba(0, 0, 0, 0.3);
-  .left{
-    position: relative;
-    background-color: #D5182E;
-    flex: 0 0 20%;
-  }
-  .right{
-    position: relative;
-    background-color: white;
-    flex: 1;
-  }
-}
-
 .userList{
   margin-top: 3.5rem;
 }
 
+//login-signup
+
 .centered-form {
+  overflow: hidden;
   display: flex;
   align-items: center;
   height: 100vh;
@@ -213,9 +208,37 @@ p {
   background:white;
   border: 1px solid #e1e1e1;
   border-radius: 3px;
-  padding: 1.5rem 2.5rem;
+  padding: 3.5rem 2.5rem;
   margin: 2rem;
   width: 50rem;
+  animation-duration: .8s;
+
+  
+
+}
+
+.form-field {
+  
+  button {
+    border: none;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    background: #fc4258;
+    color: white;
+    cursor: pointer;
+    padding: 1.2rem;
+    transition: all .3s ease;
+  }
+
+  button:hover {
+    background: #c91a2f;
+  }
+
+  button:disabled {
+    cursor: default;
+    background: #fc4258;
+  }
+  margin: 2rem 0;
 
   button {
     border: none;
@@ -236,11 +259,6 @@ p {
     cursor: default;
     background: #fc4258;
   }
-
-}
-
-.form-field {
-  margin: 2rem 0;
 }
 
 .form-field>* {
@@ -257,18 +275,19 @@ p {
 .form-field input,
 .form-field select {
   border: 1px solid #e1e1e1;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   width: 93%;
-  padding: 10px;
+  padding: 1.5rem;
 }
 
-h3 {
+.form-heading {
+  background-color: #4B4B4B;
+  color: white;
   font-weight: 700;
+  padding: 1rem 0;
   text-align: center;
-  font-size: 4rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
-  letter-spacing: .3rem;
-  color: #4B4B4B;
 }
 
 

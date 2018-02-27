@@ -1,12 +1,75 @@
 <div class="navbar">
- <div class="left">
-   <div class="left-content">
-     <h2 class="left-content-title">Chat Room #1</h2>
-   </div>
- </div>
- <div class=right>
-    <div class="right-content">
-      <h3 class="right-content-heading">Chat Ucd</h3>
+  <nav class="nav">
+    <button (click)="openJoinPop()" class="nav-btn nav-btn-red">
+      Join a private room
+    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </button>
+    <button (click)="openCreatePop()" class="nav-btn nav-btn-red">
+      Create a private room
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </button>
+    <div class="dropdown">
+      <button class="nav-btn">
+        Change Status
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div class="dropdown-content">
+        <p (click)="changeStatus('online')">Online</p>
+        <p (click)="changeStatus('offline')">Offline</p>
+        <p (click)="changeStatus('busy')">Busy</p>
+        <p (click)="changeStatus('away')">Away</p>
+      </div>
     </div>
- </div>
+    <button (click)="logout()" class="nav-btn">
+      Logout
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+    
+  </nav>
+  
+</div>
+
+<!-- CREATE-POPUP -->
+<div *ngIf="popupCreate" class="popup" (click)="closePop()">
+  <div class="popup-inner" (click)="$event.stopPropagation();">
+    <div class="content animated fadeIn">
+      <div class="form-field">
+       <h3 class="form-heading">Private room</h3>
+      </div>
+      <div class="form-field">
+        <label for="">Name</label>
+        <input [(ngModel)]="roomName" name="room" type="text" placeholder="name">
+      </div>
+      <div *ngIf="loading">
+        <div *ngIf="roomId==''" class="form-field" style="text-align:center">
+          <h4>Loading... <i class="fa fa-cog fa-spin fa-1x"></i></h4>
+        </div>
+        <div *ngIf="roomId!=''" class="form-field" style="text-align:center">
+          <h3>Your Room has been Created</h3>
+          <p>Key: {{roomId}}</p>
+        </div>
+      </div>
+      <div class="form-field">
+        <button (click)="createRoom()" class="button">Create my room</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOIN-POPUP -->
+<div *ngIf="popupJoin" class="popup" (click)="closePop()">
+  <div class="popup-inner" (click)="$event.stopPropagation();">
+    <div class="content animated fadeIn">
+      <div class="form-field">
+        <h3 class="form-heading">Join Room</h3>
+      </div>
+      <div class="form-field">
+        <label for="">Key</label>
+        <input [(ngModel)]="roomKey" name="roomKey" type="text" placeholder="Key">
+      </div>
+      <div class="form-field">
+        <button (click)="joinRoom()" class="button">Let me In</button>
+      </div>
+    </div>
+  </div>
 </div>

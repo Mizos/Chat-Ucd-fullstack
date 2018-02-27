@@ -9,11 +9,12 @@ import { User } from '../../models/user.model';
 })
 export class UserListComponent  {
 
-  users: User[]
+  users: User[]=[];
 
   constructor(chat: ChatService) {
-    chat.getUsers().subscribe(users => {
-     this.users=Object.values(users);
+    chat.getUsers().subscribe((users:Object) => {
+      const usersArray=Object.values(users);
+      this.users = usersArray;
     });
   }
 

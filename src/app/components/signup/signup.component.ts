@@ -23,7 +23,7 @@ export class SignupComponent{
       displayName:this.displayName
     }
     this.auth.signUp(user).then(resolve=>{
-      this.router.navigate(['chat'])
+      this.router.navigate(['login']);
     }).catch(error=>{
       this.errorMessage=error;
     })

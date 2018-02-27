@@ -1,0 +1,22 @@
+<div class="navbar">
+  <nav class="nav">
+    <div class="dropdown">
+      <button class="nav-btn">
+        Change Status
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div class="dropdown-content">
+        <p (click)="changeStatus('online')">Online</p>
+        <p (click)="changeStatus('offline')">Offline</p>
+        <p (click)="changeStatus('busy')">Busy</p>
+        <p (click)="changeStatus('away')">Away</p>
+      </div>
+    </div>
+    <button (click)="logout()" class="nav-btn">
+      Logout
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+
+  </nav>
+
+</div>

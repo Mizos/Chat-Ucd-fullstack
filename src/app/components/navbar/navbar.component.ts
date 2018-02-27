@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from "rxjs/Observable";
 import { AuthService } from "../../services/auth.service";
-import * as firebase from 'firebase/app';
-import { ChatService } from '../../services/chat.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-navbar',
@@ -12,20 +10,63 @@ import { ChatService } from '../../services/chat.service';
 })
 export class NavbarComponent implements OnInit {
 
-  user:Observable<firebase.User>
-  username:string;
-  constructor(private router:Router,private auth:AuthService) { }
+  //create
+  popupCreate:boolean=false;
+  roomName: string = ""
+  roomId: string = "";
+  loading: boolean = false;
+
+  //join
+  popupJoin:boolean=false;
+  roomKey:string="";
+
+ 
+
+  constructor(private router:Router,private authService:AuthService,
+              private db:AngularFireDatabase) { }
 
   ngOnInit() {
-   this.auth.getAuthUser().subscribe(user=>{
-     this.username=user.email;
-   })
   }
 
   logout(){
-    this.auth.logout();
+    this.authService.logout();
     this.router.navigate(['login']);
+  }
 
+  changeStatus(status:string){
+    this.authService.setUserStatus(status);
+  }
+
+  createRoom(){
+    this.loading = true;
+    console.log(this.roomName+" has been created");
+    this.loading=true;
+    const userId=this.authService.getUserId();
+    const path=`/privateRoom/${this.roomName}_${userId}`;
+    this.db.object(path).set({roomName:this.roomName}).then(()=>{
+      this.roomId = `${this.roomName}_${userId}`;
+    }).catch(err=>{
+      console.log(err);
+    })
+    
+  }
+
+  joinRoom(){
+    this.router.navigate(['chat',`${this.roomKey}`])
+  }
+
+  openCreatePop(){
+    this.popupCreate = true;
+  }
+
+  openJoinPop(){
+    this.popupJoin = true;
+  }
+
+  closePop() {
+    this.popupJoin=this.popupCreate = false;
+    this.roomName = '';
+    this.loading = false;
   }
 
 }

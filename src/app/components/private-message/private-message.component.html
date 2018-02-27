@@ -1,0 +1,11 @@
+<li class="message animated fadeIn" [ngClass]="{'message-self-private':mymessgae}">
+  <div class="msg-avatar">
+    <img src="assets/img/user.png" alt="" />
+    <!-- <span class="timestamp">{{chatMessage.createdAt|date}}</span> -->
+  </div>
+
+  <div class="msg-text">
+    <span class="sender" [ngClass]="{'sender-self-private':mymessgae}">{{username}}</span>
+    <p>{{text}}</p>
+  </div>
+</li>

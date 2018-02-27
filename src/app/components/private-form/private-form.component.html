@@ -1,0 +1,4 @@
+<form class="form" (submit)="send($event)">
+  <input name="chat" autocomplete="off" type="text" class="chat-input" [(ngModel)]="message" placeholder="start typing">
+  <button class="chat-button chat-button-private" type="submit">Send</button>
+</form>

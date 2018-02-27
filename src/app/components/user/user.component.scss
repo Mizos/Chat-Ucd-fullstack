@@ -5,9 +5,9 @@
   width: 70%;
   margin-top: 1.5rem;
   align-items: flex-start;
-  background-color: #272727;
+  background-color: #282E34;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  color: #A098A5;
+  color: white;
   border-radius: 3px;
   transition: ease-in 0.2s;
 }
@@ -25,6 +25,11 @@
 .busy {
   background-color: #FB0;
 }
+
+.away {
+  background-color: #ec342e;
+}
+
 
 .offline {
   background-color: #888;
