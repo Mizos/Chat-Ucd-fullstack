@@ -11,12 +11,12 @@ export class PrivateMessageComponent implements OnInit {
 
   @Input() chatMessage: any;
 
-  username: string;
-  useremail: string
-  text: string;
+  username: string='';
+  useremail: string='';
+  text: string='';
   timeStamp: Date = new Date();
 
-  myemail: string;
+  myemail: string='';
   mymessgae: boolean;
 
 
@@ -32,10 +32,13 @@ export class PrivateMessageComponent implements OnInit {
 
 
   ngOnInit(chatMessage = this.chatMessage) {
-    this.text = chatMessage.text;
-    this.username = chatMessage.from;
-    this.useremail = chatMessage.email,
+    if(chatMessage){
+      this.text = chatMessage.text;
+      this.username = chatMessage.from;
+      this.useremail = chatMessage.email,
       this.timeStamp = chatMessage.createdAt;
+    }
+    
   }
 
 }

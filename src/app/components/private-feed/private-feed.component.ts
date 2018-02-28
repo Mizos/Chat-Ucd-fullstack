@@ -18,12 +18,16 @@ export class PrivateFeedComponent implements OnInit,AfterViewChecked {
   ngOnInit() {
 
     const key =this.route.snapshot.params['id'];
-    this.privateChat.getPrivateMessages(key).valueChanges().subscribe(feed => {
-      if (this.feed.length == 0)
-        this.feed = feed;
-      else {
-        this.feed.push(feed[feed.length - 1]);
+    this.privateChat.getPrivateMessages(key).valueChanges().subscribe((feed:any) => {
+      if(feed[0]){
+        if (feed.length <= this.feed.length && feed[0].from !== 'Admin') this.feed = [];
+        else if (this.feed.length == 0)
+          this.feed = feed;
+        else {
+          this.feed.push(feed[feed.length - 1]);
+        }
       }
+     
     })
 
   }

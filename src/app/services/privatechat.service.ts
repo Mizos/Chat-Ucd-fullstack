@@ -23,17 +23,31 @@ export class PrivatechatService {
   }
 
 
-
   send(message: string,key:string) {
-    const timestamp = this.getTimestamp();
-    const username = this.username
-    this.chatMessages = this.db.list(`privateRoom/${key}/messages`, ref => ref.orderByKey()); 
-    this.chatMessages.push({
-      text: message,
-      createdAt: timestamp,
-      from: username,
-      email: this.user.email
+    firebase.database().ref(`privateRoom/${key}/uid`).once("value",snap=>{
+      this.chatMessages = this.db.list(`privateRoom/${key}/messages`, ref => ref.orderByKey());
+      const timestamp = this.getTimestamp();
+      const username = this.username
+      if(snap.val()){
+        this.chatMessages.push({
+          text: message,
+          createdAt: timestamp,
+          from: username,
+          email: this.user.email
+        })
+      }
+      else{
+        this.chatMessages.push({
+          text: 'Sorry , this room is not active anymore please join or create a new one',
+          createdAt: timestamp,
+          from: 'Admin',
+          email: 'Admin@gmail.com'
+        });
+        this.db.database.ref(`privateRoom/${key}/messages`).remove();
+        this.deleteRoom(key);
+      }
     })
+   
   }
 
   getPrivateMessages(key:string){
@@ -52,6 +66,10 @@ export class PrivatechatService {
     const uid = this.user.uid;
     const path = `users/${uid}`;
     return this.db.object(path).valueChanges();
+  }
+
+  deleteRoom(key:string){
+    return this.db.database.ref(`privateRoom/${key}`).remove();
   }
 
 }
