@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-private-navbar',
@@ -9,9 +10,19 @@ import { AuthService } from "../../services/auth.service";
 })
 export class PrivateNavbarComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  showDestroy:boolean=false;
+
+  constructor(private router: Router, private authService: AuthService,private route:ActivatedRoute) {
+    this.authService.getAuthUser().subscribe(user=>{
+      const key = this.route.snapshot.params['id'];
+      firebase.database().ref(`/privateRoom/${key}/uid`).once("value", snap => {
+       if(snap.val()==user.uid) this.showDestroy=true;
+      })
+    })
+   }
 
   ngOnInit() {
+    
   }
 
   logout() {
@@ -19,8 +30,8 @@ export class PrivateNavbarComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  changeStatus(status: string) {
-    this.authService.setUserStatus(status);
+  leave(){
+    this.router.navigate(['chat']);
   }
 
 }

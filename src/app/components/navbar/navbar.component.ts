@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
   //join
   popupJoin:boolean=false;
   roomKey:string="";
+  error:boolean=false;
 
  
 
@@ -39,12 +41,16 @@ export class NavbarComponent implements OnInit {
 
   createRoom(){
     this.loading = true;
-    console.log(this.roomName+" has been created");
-    this.loading=true;
     const userId=this.authService.getUserId();
-    const path=`/privateRoom/${this.roomName}_${userId}`;
-    this.db.object(path).set({roomName:this.roomName}).then(()=>{
-      this.roomId = `${this.roomName}_${userId}`;
+    const key = `${ this.roomName }_${ userId }`;
+    const path=`/privateRoom/${key}`;
+    const data={
+      Name:this.roomName,
+      key:key,
+      uid:userId
+    }
+    this.db.object(path).set(data).then(()=>{
+      this.roomId = key;
     }).catch(err=>{
       console.log(err);
     })
@@ -52,7 +58,15 @@ export class NavbarComponent implements OnInit {
   }
 
   joinRoom(){
-    this.router.navigate(['chat',`${this.roomKey}`])
+    firebase.database().ref(`/privateRoom/${this.roomKey}/key`).once("value",snap=>{
+     if(snap.val()){
+       this.router.navigate(['chat',`${this.roomKey}`])
+     }
+     else{
+      this.error=true;
+     }
+    })
+   
   }
 
   openCreatePop(){
@@ -67,6 +81,7 @@ export class NavbarComponent implements OnInit {
     this.popupJoin=this.popupCreate = false;
     this.roomName = '';
     this.loading = false;
+    this.error=false;
   }
 
 }

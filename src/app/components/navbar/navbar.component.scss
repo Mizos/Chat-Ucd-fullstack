@@ -20,7 +20,7 @@
       margin: 0 1rem;
       font-weight: 700;
       transition: all .3s;
-      &-red{
+      &:hover{
         background-color:#f04444;
         color: white;
       }

@@ -1,10 +1,10 @@
 <div class="navbar">
   <nav class="nav">
-    <button (click)="openJoinPop()" class="nav-btn nav-btn-red">
+    <button (click)="openJoinPop()" class="nav-btn">
       Join a private room
     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
     </button>
-    <button (click)="openCreatePop()" class="nav-btn nav-btn-red">
+    <button (click)="openCreatePop()" class="nav-btn">
       Create a private room
       <i class="fa fa-plus-circle" aria-hidden="true"></i>
     </button>
@@ -67,6 +67,13 @@
         <label for="">Key</label>
         <input [(ngModel)]="roomKey" name="roomKey" type="text" placeholder="Key">
       </div>
+
+      <div *ngIf="error">
+        <div class="form-field" style="text-align:center">
+          <h4 style="color:#f73636">Sorry,this key is not valid or the room has been deleted</h4>
+        </div>
+      </div>
+
       <div class="form-field">
         <button (click)="joinRoom()" class="button">Let me In</button>
       </div>
