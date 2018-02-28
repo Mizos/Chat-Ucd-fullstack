@@ -18,19 +18,20 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
-//Services
-import { AuthService } from "./services/auth.service";
-import { ChatService } from "./services/chat.service";
-//Routes
-import { appRoutes } from "./routes";
-//Env
-import { environment } from "../environments/environment";
 import { LoaderComponent } from './components/loader/loader.component';
 import { PrivateRoomComponent } from './components/private-room/private-room.component';
 import { PrivateNavbarComponent } from './components/private-navbar/private-navbar.component';
 import { PrivateFeedComponent } from './components/private-feed/private-feed.component';
 import { PrivateFormComponent } from './components/private-form/private-form.component';
 import { PrivateMessageComponent } from './components/private-message/private-message.component';
+//Services
+import { AuthService } from "./services/auth.service";
+import { ChatService } from "./services/chat.service";
+import { PrivatechatService } from './services/privatechat.service';
+//Routes
+import { appRoutes } from "./routes";
+//Env
+import { environment } from "../environments/environment";
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { PrivateMessageComponent } from './components/private-message/private-me
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [ChatService,AuthService],
+  providers: [ChatService,AuthService,PrivatechatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

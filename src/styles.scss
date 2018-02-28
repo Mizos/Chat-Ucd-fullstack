@@ -71,6 +71,12 @@ body{
   &::-webkit-scrollbar-thumb {
     background:#E22C41
   }
+
+  &-private{
+    &::-webkit-scrollbar-thumb {
+      background: rgb(151, 21, 202)
+    }
+  }
 }
 
 .chat-list{
@@ -132,13 +138,14 @@ body{
   border-radius: 8px;
   background-color: #fcfcfc;
   border: 1px solid rgba(0, 0, 0, .125);
-  animation-duration: .8s;
+  animation-duration: .5s;
 
   &-self{
     background-color: rgb(241, 70, 90);
     color: white;
     &-private{
-      background-color:#8E13C7;
+      background-color:rgb(154, 71, 192);
+      color: white;
     }
   }
 }
@@ -149,6 +156,12 @@ body{
   font-size: 1.7rem;
   text-transform: capitalize;
   &-self{
+    color: white;
+    &-private{
+      color: white;
+    }
+  }
+  &-private{
     color: white;
   }
 }

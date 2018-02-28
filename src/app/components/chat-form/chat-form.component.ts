@@ -9,9 +9,11 @@ import { ChatService } from '../../services/chat.service';
 export class ChatFormComponent implements OnInit {
 
   message:string='';
-  constructor(private chat:ChatService) { }
+  key:string;
+  constructor(private chat: ChatService) { }
 
   ngOnInit() {
+   
   }
 
   

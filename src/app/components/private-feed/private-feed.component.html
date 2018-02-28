@@ -1,6 +1,6 @@
-<div #scroller class="chat-feed">
+<div #scroller class="chat-feed chat-feed-private">
   <ul class="chat-list">
-    <!-- <app-message *ngFor="let message of feed" [chatMessage]=message></app-message> -->
+    <app-private-message *ngFor="let message of feed" [chatMessage]=message ></app-private-message>
   </ul>
 </div>
 
