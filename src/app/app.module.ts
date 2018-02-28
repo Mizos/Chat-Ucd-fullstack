@@ -32,6 +32,7 @@ import { PrivatechatService } from './services/privatechat.service';
 import { appRoutes } from "./routes";
 //Env
 import { environment } from "../environments/environment";
+import { AuthGuard } from './services/auth.guard';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { environment } from "../environments/environment";
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [ChatService,AuthService,PrivatechatService],
+  providers: [ChatService,AuthService,PrivatechatService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

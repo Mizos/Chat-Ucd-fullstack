@@ -28,7 +28,7 @@ export class ChatService {
   }
 
   getMessages(): any {
-    return this.db.list('messages', ref => ref.orderByKey());
+    return this.db.list('messages', ref => ref.limitToLast(20).orderByKey());
   }
 
 
