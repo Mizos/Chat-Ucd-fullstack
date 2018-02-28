@@ -45,3 +45,4 @@ export class PrivateNavbarComponent implements OnInit {
   
 
 }
+}
